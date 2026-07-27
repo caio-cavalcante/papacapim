@@ -6,6 +6,7 @@ import '../../features/feed/presentation/create_post_screen.dart';
 import '../../features/search/presentation/search_screen.dart';
 import '../../features/profile/presentation/profile_screen.dart';
 import '../../features/profile/presentation/edit_profile_screen.dart';
+import '../../data/mocks/mock_data.dart';
 
 class AppRoutes {
   static const String login = '/login';
@@ -13,13 +14,19 @@ class AppRoutes {
   static const String mainShell = '/';
   static const String createPost = '/create-post';
   static const String editProfile = '/edit-profile';
+  static const String profile = '/profile';
 
   static Map<String, WidgetBuilder> get routes => {
         login: (context) => const LoginScreen(),
         register: (context) => const RegisterScreen(),
         mainShell: (context) => const MainShell(),
         createPost: (context) => const CreatePostScreen(),
-        editProfile: (context) => const EditProfileScreen(),
+        // '/edit-profile' é aberto via MaterialPageRoute diretamente do ProfileScreen.
+        // Mantido aqui como fallback sem args.
+        editProfile: (context) =>
+            EditProfileScreen(user: MockData.currentUser),
+        // '/profile' recebe ProfileScreenArgs via settings.arguments.
+        profile: (context) => const ProfileScreen(),
       };
 }
 
