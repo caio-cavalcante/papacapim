@@ -22,6 +22,58 @@ class MockData {
     isFollowing: false,
   );
 
+  // ─── Usuários para busca ──────────────────────────────────────────────────
+  static const List<UserModel> searchableUsers = [
+    UserModel(
+      id: 'user_me',
+      name: 'Caio Cavalcante',
+      username: 'caio_cavalcante',
+      followersCount: 142,
+      followingCount: 38,
+      isFollowing: false,
+    ),
+    UserModel(
+      id: 'user_1',
+      name: 'João Paulo',
+      username: 'jp_prof',
+      followersCount: 310,
+      followingCount: 12,
+      isFollowing: false,
+    ),
+    UserModel(
+      id: 'user_2',
+      name: 'Luan Coelho',
+      username: 'luannnnn_dev',
+      followersCount: 520,
+      followingCount: 74,
+      isFollowing: true,
+    ),
+    UserModel(
+      id: 'user_3',
+      name: 'Breno Oliveira',
+      username: 'ditador01',
+      followersCount: 88,
+      followingCount: 30,
+      isFollowing: false,
+    ),
+    UserModel(
+      id: 'user_4',
+      name: 'Joseph Borges',
+      username: 'joseph_nao_stalin',
+      followersCount: 1024,
+      followingCount: 200,
+      isFollowing: false,
+    ),
+    UserModel(
+      id: 'user_5',
+      name: 'Triz',
+      username: 'be_a_triz',
+      followersCount: 45,
+      followingCount: 15,
+      isFollowing: true,
+    ),
+  ];
+
   // ─── Posts do feed ────────────────────────────────────────────────────────
   static final List<PostModel> followingPosts = [
     PostModel(
@@ -58,6 +110,50 @@ class MockData {
       createdAt: DateTime.now().subtract(const Duration(minutes: 30)),
       likesCount: 3,
       isLiked: true,
+    ),
+    PostModel(
+      id: 'p3',
+      userId: 'user_2',
+      userName: 'Luan Coelho',
+      userUsername: 'luannnnn_dev',
+      content:
+          'Flutter é incrível! Consegui criar um app bonito em poucos dias 🚀',
+      createdAt: DateTime.now().subtract(const Duration(hours: 5)),
+      likesCount: 34,
+      isLiked: false,
+    ),
+    PostModel(
+      id: 'p4',
+      userId: 'user_3',
+      userName: 'Breno Oliveira',
+      userUsername: 'ditador01',
+      content:
+          'Dica: utilize o DevTools do Flutter para depurar o layout em tempo real.',
+      createdAt: DateTime.now().subtract(const Duration(days: 1)),
+      likesCount: 19,
+      isLiked: false,
+    ),
+    PostModel(
+      id: 'p5',
+      userId: 'user_4',
+      userName: 'Joseph Borges',
+      userUsername: 'joseph_nao_stalin',
+      content:
+          'Material 3 + Flutter = combinação perfeita para apps modernos e acessíveis! 🎨',
+      createdAt: DateTime.now().subtract(const Duration(days: 2)),
+      likesCount: 87,
+      isLiked: true,
+    ),
+    PostModel(
+      id: 'p6',
+      userId: 'user_5',
+      userName: 'Triz',
+      userUsername: 'be_a_triz',
+      content:
+          'Papacapim sendo desenvolvido com muito café ☕ e dedicação. Vamos nessa!',
+      createdAt: DateTime.now().subtract(const Duration(hours: 10)),
+      likesCount: 7,
+      isLiked: false,
     ),
   ];
 
@@ -138,5 +234,14 @@ class MockData {
     if (userId == 'user_me') return currentUserPosts;
     if (userId == 'user_1') return otherUserPosts;
     return allPosts.where((p) => p.userId == userId).toList();
+  }
+
+  /// Retorna o [UserModel] correspondente ao [userId] da lista [searchableUsers].
+  static UserModel? userById(String userId) {
+    try {
+      return searchableUsers.firstWhere((u) => u.id == userId);
+    } catch (_) {
+      return null;
+    }
   }
 }
