@@ -14,7 +14,9 @@ class _FeedScreenState extends State<FeedScreen> with SingleTickerProviderStateM
   late TabController _tabController;
   final String _currentUserId = 'user_me';
 
+  // ignore: prefer_final_fields
   List<PostModel> _followingPosts = List.from(MockData.followingPosts);
+  // ignore: prefer_final_fields
   List<PostModel> _allPosts = List.from(MockData.allPosts);
 
   @override
