@@ -16,8 +16,9 @@ class PapacapimApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
         useMaterial3: true,
       ),
-      // Define a rota inicial para o Shell principal (Feed, Busca, Perfil)
-      initialRoute: AppRoutes.mainShell,
+      // Rota inicial: Login (fluxo completo de autenticação)
+      // Altere para AppRoutes.mainShell para pular o login durante o desenvolvimento.
+      initialRoute: AppRoutes.login,
       routes: AppRoutes.routes,
       debugShowCheckedModeBanner: false,
     );
